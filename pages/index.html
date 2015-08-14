@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BEKK-theme for remark</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="bekk.css" type="text/css" rel="stylesheet">
+  </head>
+  <body class="bekk-black">
+    <textarea id="source">
+
+class: front-page
+
+# Flyway
+
+## Migrering av data - SQL og Groovy (Java)
+
+Sjekk ut [https://github.com/kjell-gunnar-midtlyng/flywayDemo](https://github.com/kjell-gunnar-midtlyng/flywayDemo)
+
+Charlie Midtlyng
+
+Lyntale-fagdag
+
+---
+
+
+# Flyway
+
+* Migrering av database
+
+* Kjedelig? Ja, men nødvendig...
+ 
+* Manuelt vs. automatisk
+  * Lik tilstand i alle miljøer
+  * Starte fra scratch flere ganger
+
+
+
+
+* SQL-baserte migreringer (opprette tabeller)
+
+* Java/Groovy/Scala-baserte migreringer (flytte komplekst innhold)
+
+
+---
+
+# Flyway - versjonering
+
+* Løpenummer, Dato/tidspunkt 
+  * V1, V20150101, V20150101000001 osv.
+  * 'V' foran gir gyldig Java-klassenavn 
+
+
+* Feilet migrering rulles tilbake
+  * Rett opp feil og migrering fortsetter der den slapp
+
+
+* Støtter de fleste databaser
+ * Oracle, SQL Server, SQL Azure, DB2, DB2 z/OS, MySQL, MariaDB, Google Cloud SQL, PostgreSQL, Redshift, Vertica, H2, Hsql, Derby, SQLite, solidD
+
+---
+
+# Flyway - funksjoner
+
+* Migrate - migrere data
+
+* Clean - tømme basen
+
+* Repair - fikser checksumfeil
+
+* Info - hva er migrert/ikke migrert
+
+* Baseline - sette et "nullpunkt" for migreringer
+
+---
+
+class: agenda
+
+# Demo
+
+* Case: Fotball! 
+* Innhold: Spillere, lag og stadioner
+* Steg 1: Opprette tabeller
+* Steg 2: Legge inn data fra filer
+
+---
+
+# Erfaringer
+
+* Feil checksum
+
+* Miljø-forskjeller -> Gradle to the rescue
+
+
+---
+
+# Behov på prosjekt
+
+* Nytt registrerings- og rapporteringssystem for geitebønder
+
+* Migrerer all historikk om geiter fra 90-tallet til i dag (mye data)
+
+* Må endre datastrukturen underveis i migreringer
+
+* Må koble sammen dyr og eier med tanke på historikk
+
+
+---
+
+# Lær mer!
+
+* [flywaydb.org/](http://flywaydb.org/)
+* [github.com/kjell-gunnar-midtlyng/flywayDemo](https://github.com/kjell-gunnar-midtlyng/flywayDemo)
+* [kjell-gunnar-midtlyng.github.io/flywayDemo](http://kjell-gunnar-midtlyng.github.io/flywayDemo)
+
+---
+
+class: center middle bekk-top
+
+# Spørsmål?
+Charlie
+
+
+    </textarea>
+
+  <script src="vendor/remark-0.11.0.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    var slideshow = remark.create({
+      ratio: '16:9',
+      highlightStyle: 'monokai',
+      highlightLanguage: 'javascript'
+    });
+  </script>
+
+
+  </body>
+</html>

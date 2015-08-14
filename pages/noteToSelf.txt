@@ -1,0 +1,16 @@
+Demo:
+- Vise domene-objekter
+- application properties
+- Sql-migreringer
+- Java-migreringer
+- csv-filer
+
+- Legg inn en feil
+- kjør migrering
+- gw bootRun
+- gw flywayInfo
+- gw bootRun
+- gw flywayInfo
+- endre litt innhold
+- gw flywayInfo
+- gw flywayRepair
