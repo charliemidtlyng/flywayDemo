@@ -1,0 +1,70 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE")
+        classpath("org.flywaydb:flyway-gradle-plugin:3.1")
+        classpath 'com.h2database:h2:1.4.187'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'flyway'
+
+jar {
+    baseName = 'flywayDemo'
+    version =  '1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.flywaydb:flyway-core:3.1")
+    compile("org.flywaydb:flyway-gradle-plugin:3.1")
+    compile("org.codehaus.groovy:groovy-all:2.4.1")
+    compile("commons-dbcp:commons-dbcp:1.4")
+    compile("net.sourceforge.jtds:jtds:1.2.7")
+    testCompile("junit:junit")
+    runtime 'com.h2database:h2:1.4.187'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+gradle.taskGraph.beforeTask { Task task ->
+    if (task.name.startsWith('flyway')) {
+        setFlywayProperties()
+    }
+}
+
+private void setFlywayProperties() {
+    Properties props = loadProperties()
+    ext['flyway.url'] = props.getProperty('spring.datasource.url')
+    ext['flyway.user'] = props.getProperty('spring.datasource.username')
+    ext['flyway.password'] = props.getProperty('spring.datasource.password')
+    ext['flyway.locations'] = props.getProperty('flyway.locations')
+}
+
+private Properties loadProperties() {
+    Properties props = new Properties()
+    loadPropertiesFromFile(props, "src/main/resources/application.properties")
+    props
+}
+
+private void loadPropertiesFromFile(Properties props, String filename) {
+    def file = new File(filename)
+    if (file.canRead()) {
+        props.load(new FileInputStream(file))
+    }
+}
