@@ -5,12 +5,14 @@ Demo:
 - Java-migreringer
 - csv-filer
 
-- Legg inn en feil
-- kjør migrering
-- gw bootRun
+
+- gw flywayClean
 - gw flywayInfo
 - gw bootRun
 - gw flywayInfo
-- endre litt innhold
-- gw flywayInfo
+
+- Legg inn endring
+- gw bootRun
+- gw flywayValidate
 - gw flywayRepair
+- gw bootRun
